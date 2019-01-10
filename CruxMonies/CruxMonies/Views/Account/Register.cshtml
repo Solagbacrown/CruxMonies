@@ -1,0 +1,132 @@
+﻿@model CruxMonies.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    
+        <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- CSS StyleSheets -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/assets/css/assets.css">
+
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link id="theme_css" rel="stylesheet" href="~/assets/css/light.css">
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5.js"></script>
+    <![endif]-->
+    <!-- Skin CSS file -->
+    <link id="skin_css" rel="stylesheet" href="~/assets/css/skins/default.css">
+    
+    <script type="text/javascript" src="~/assets/js/assets.min.js"></script>
+
+            <!-- general script file -->
+            <script type="text/javascript" src="~/assets/js/script.js"></script>
+}
+<div class="login-page login-1">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="login-box-lg">
+                    <div class="heading centered padding-vertical-20">
+                        <i class="fa fa-info-circle tbl main-color"></i>
+                        <h3 class="uppercase head-4 bold">Registeration Form</h3>
+                    </div>
+
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-action", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4>Create a new account.</h4>
+                        <hr />
+                        @Html.ValidationSummary()
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.UserName, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.Email, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.PhoneNumber, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.AccountName, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.AccountName, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.AccountNo, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.AccountNo, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-input">
+                            @Html.LabelFor(m => m.BankName, new { @class = "" })
+
+                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control shape" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "" })
+
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control shape" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "" })
+
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control shape" })
+
+                        </div>
+
+
+                        <div class="form-input">
+                            <span style=" color:red">
+                                Upload your passport
+                            </span>
+                            <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedFile" />
+
+                        </div>
+                        <div class="form-input margin-top-20 clearfix">
+                            <input type="submit" class="btn btn-lg main-bg btn-block shape" value="Register">
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <!-- footer copyrights left cell -->
+                <div class="copyrights col-md-5 first">© Copyrights <b class="main-color">CruxInterest</b> @DateTime.Now.Year. All Rights Reserved.</div>
+
+                <!-- footer social links right cell start -->
+                <div class="col-md-7 last">
+                    <ul class="footer-menu f-right">
+                        <li><a href="~/Home/Index">Home</a></li>
+                        <li><a href="~/Home/Index/#About">About</a></li>
+                        <li><a href="http://cruxedgesolutions.com">Services</a></li>
+                        @*<li><a href="#">Blog</a></li>*@
+                        <li><a href="~/Home/Index/#Contact">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- footer social links right cell end -->
+
+            </div>
+        </div>
+    </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

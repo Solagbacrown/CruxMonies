@@ -1,0 +1,88 @@
+﻿@model CruxMonies.Models.PaymentModel
+@{
+    ViewBag.Title = "My Account";
+    
+            <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- CSS StyleSheets -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/assets/css/assets.css">
+
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link id="theme_css" rel="stylesheet" href="~/assets/css/light.css">
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5.js"></script>
+    <![endif]-->
+    <!-- Skin CSS file -->
+    <link id="skin_css" rel="stylesheet" href="~/assets/css/skins/default.css">
+    
+    <script type="text/javascript" src="~/assets/js/assets.min.js"></script>
+
+            <!-- general script file -->
+            <script type="text/javascript" src="~/assets/js/script.js"></script>
+
+}
+
+
+<div id="contentWrapper">
+    
+    <div style="height:1000px" class="pageContent">
+      
+     @foreach (var Mine2 in Model.MyAccountInfo2)
+                    {
+          
+        <div class="page-title title-1 parallax about-me-title" style="background-image: url('/images/Files/@Mine2.NameOfFile') " data-stellar-background-ratio="0.65" data-overlay="rgba(0,0,0,.3)">
+            
+            <div class="container">
+                <div class="row">
+                  
+                        <h1 class="white">@Html.DisplayFor(m => Mine2.AccountName)</h1>
+                        <h3 class="white">@Html.DisplayFor(m => Mine2.AccountNo) -- @Html.DisplayFor(m => Mine2.BankName) </h3>
+                        
+                    
+                    <div class="my-info shape">
+                       
+                        <ul class="list">
+                            @foreach (var Mine in Model.MyAccountInfo)
+                            {
+
+                                <li class="white"><i class="fa fa-check main-color"></i>Deposit= &#x20A6 @Html.DisplayFor(m => Mine.Deposit)</li>
+                                <li class="white"><i class="fa fa-check main-color"></i>On @Html.DisplayFor(m => Mine.Date)</li>
+                                  <li class="white"><i class="fa fa-check main-color"></i>Interest= &#x20A6 @Html.DisplayFor(m => Mine.InterestDue)</li>
+                                <li class="white"><i class="fa fa-check main-color"></i>Total Amount= &#x20A6 @Html.DisplayFor(m => Mine.Total)</li>
+                  
+                            }
+
+
+                        </ul>
+                    </div>
+                  
+
+                </div>
+            </div>
+        </div>
+     }
+    </div>
+</div>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <!-- footer copyrights left cell -->
+            <div class="copyrights col-md-5 first">© Copyrights <b class="main-color">CruxInterest</b> @DateTime.Now.Year. All Rights Reserved.</div>
+
+            <!-- footer social links right cell start -->
+            <div class="col-md-7 last">
+                <ul class="footer-menu f-right">
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/Index/#About">About</a></li>
+                    <li><a href="http://cruxedgesolutions.com">Services</a></li>
+                    @*<li><a href="#">Blog</a></li>*@
+                    <li><a href="~/Home/Index/#Contact">Contact</a></li>
+                </ul>
+            </div>
+            <!-- footer social links right cell end -->
+
+        </div>
+    </div>
+</div>

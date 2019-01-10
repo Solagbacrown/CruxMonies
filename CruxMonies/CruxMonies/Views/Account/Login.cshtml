@@ -1,0 +1,120 @@
+﻿@model CruxMonies.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- CSS StyleSheets -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/assets/css/assets.css">
+
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link id="theme_css" rel="stylesheet" href="~/assets/css/light.css">
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5.js"></script>
+    <![endif]-->
+    <!-- Skin CSS file -->
+    <link id="skin_css" rel="stylesheet" href="~/assets/css/skins/default.css">
+}
+<div style="height:800px" class="login-page login-1">
+
+
+    <div class="pageWrapper animsition">
+
+        <div id="contentWrapper">
+
+            <div class="login-box-lg">
+                <div class="clearfix over-hidden">
+                    <!-- Logo start -->
+                    <div class="logo light f-left">
+                        <a href="index.html"><img alt="" src="~/assets/images/logo-light.png"></a>
+                    </div>
+                    <!-- Logo end -->
+
+                    <div class="login-head f-right">Login</div>
+                </div>
+
+                <section id="loginForm">
+                    <div class="login-inner shape">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+
+                            <hr />
+                            @Html.ValidationSummary(true)
+                            <div class="form-input">
+                                @Html.LabelFor(m => m.UserName, new { @class = "main-color" })
+                                <span class="fa fa-user main-color"></span>
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control shape" })
+                                @Html.ValidationMessageFor(m => m.UserName)
+
+                            </div>
+                            <div class="form-input">
+                                @Html.LabelFor(m => m.Password, new { @class = "main-color" })
+                                <span class="fa fa-lock main-color"></span>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control shape" })
+                                @Html.ValidationMessageFor(m => m.Password)
+
+                            </div>
+                            @*<div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe)
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="form-input">
+
+                                <input type="submit" value="Log in" class="btn btn-lg btn-block main-bg shape" />
+
+                            </div>
+
+                            <p>
+                                @Html.ActionLink("Register", "Register") if you don't have a local account.
+                            </p>
+                        }
+                    </div>
+                    <div class="copyrights white">© Copyrights <b class="main-color">CruxInterest</b> @DateTime.Now.Year. All Rights Reserved.</div>
+                </section>
+            </div>
+            @*<div class="col-md-4">
+                    <section id="socialLoginForm">
+                        @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+                    </section>
+                </div>*@
+            <script type="text/javascript" src="~/assets/js/assets.min.js"></script>
+
+            <!-- general script file -->
+            <script type="text/javascript" src="~/assets/js/script.js"></script>
+        </div>
+    </div>
+</div>
+    
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <!-- footer copyrights left cell -->
+            <div class="copyrights col-md-5 first">© Copyrights <b class="main-color">CruxInterest</b> @DateTime.Now.Year. All Rights Reserved.</div>
+
+            <!-- footer social links right cell start -->
+            <div class="col-md-7 last">
+                <ul class="footer-menu f-right">
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/Index/#About">About</a></li>
+                    <li><a href="http://cruxedgesolutions.com">Services</a></li>
+                    @*<li><a href="#">Blog</a></li>*@
+                    <li><a href="~/Home/Index/#Contact">Contact</a></li>
+                </ul>
+            </div>
+            <!-- footer social links right cell end -->
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

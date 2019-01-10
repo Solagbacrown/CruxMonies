@@ -1,0 +1,21 @@
+﻿@model CruxMonies.Models.PaymentModel
+@{
+    ViewBag.Title = "Payment";
+}
+@using (Html.BeginForm("PaymentIndex", "Payment", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+
+    foreach (var cat in Model.MembershipList)
+    {
+        <label class="btn btn-group-justified btn-danger" id="option-all" style="text-transform:uppercase;font-family: 'Adobe Gothic Std';">
+            @Html.RadioButtonFor(m => m.MemberId, cat.MemberId, new { @id = @cat.MemberId, @required = "", tabindex = "1", type = "radio" })
+            @Html.Label(cat.MemberType)
+        </label>
+
+    }
+    <div class=" col-md-12">
+        <div class="form-group">
+            <input style="width: 100%; background:darkblue; color:white;" type="submit" value="Make Payment" class="btn btn-success btn-block" />
+        </div>
+    </div>
+}
